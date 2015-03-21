@@ -1,0 +1,12 @@
+# Site settings
+title: Pizza Cat tech blog
+email: jack@getpizza.cat
+description: "Colorless Green Ideas' tech blog about Pizza Cat"
+baseurl: ""
+url: "http://tech.getpizza.cat/"
+twitter_username: getpizzacat
+github_username:  Colorless-Green-Ideas
+
+# Build settings
+markdown: kramdown
+permalink: pretty
