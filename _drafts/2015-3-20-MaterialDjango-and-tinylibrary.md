@@ -15,8 +15,8 @@ MaterialDjango would support currently:
 {% highlight python %}
 #forms.py
 from django import forms
-from widgets import PaperTextInput
-    class BookForm(forms.ModelForm):
+from materialdjango.widgets import PaperTextInput
+class BookForm(forms.ModelForm):
     class Meta:
         model = Book
         labels={'title': '',
@@ -28,15 +28,36 @@ from widgets import PaperTextInput
             'author': PaperTextInput,
         }
 {% endhighlight %}
+or
+{% highlight python %}
+#forms.py
+from django.forms.models import modelform_factory
+from materialdjango.forms import mangle_form
+
+BookForm = mangle_form(modelform_factory(Book,fields="__all__"))
+
+{% endhighlight %}
+
 - [Vulcanization](http://docs.polymerchina.org/articles/concatenating-web-components.html) if you don't have a npm/bower stack dev dependency
 - A pleasantly simple (30~ LOC vulcanized) base.html to use for rapid prototyping
+- Cleaned up imports, managed assets
+{% highlight html %} 
+{%raw%}
+{% load staticfiles %}
+{% load polymerdep %}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <script src={{"{% static 'materialdjango/components/bower_components/webcomponentsjs/webcomponents.js' }}%}"></script>
+    {{ "polymer/polymer.html" | dep}}
+    {{ "core-scaffold/core-scaffold.html" | dep}}
+<...>
+{%endraw%}
+{% endhighlight %}
 - Easy compatability with next Polymer release because we don't use any of the internals!
 - Don't write CSS unless you have to.
 
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
-
 *Valve time may apply.
 
-[jekyll-gh]: https://github.com/jekyll/jekyll
-[jekyll]:    http://jekyllrb.com
