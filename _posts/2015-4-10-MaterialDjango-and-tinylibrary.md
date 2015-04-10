@@ -1,17 +1,19 @@
 ---
 layout: post
-title:  "Introducing MaterialDjango via tinylibrary"
-date:   2015-03-20 24:00:00
-categories: django update tinylibrary
+title:  "Introducing MaterialDjango & tinylibrary"
+date:   2015-04-10 18:00:00
+categories: django update tinylibrary shipit
 ---
 
 There isn't yet a MaterialDjango [Google's Material Design for django], but there is tinylibrary a lab for me to prototype stuff for the big Pizza Cat release that's around the corner.*
 
-Tinylibrary is a tool to track libraries that aren't big enough to merit running dedicated library systems or working out logins. Just add it on to a django site! (Or run ours. Runs with Whitenoise for heroku-approved static files with gzip) We're using Google's Polymer library for an IE shim for webcomponents and then the paper-ui library built upon it. But we don't use Polymer's MVC bending templating. Django does the "hard work" we're just here to take Paper-UI niceness for "free."
+[Tinylibrary](https://github.com/Colorless-Green-Ideas/tinylibrary) ([demo on heroku](https://tinylibrary.herokuapp.com/books/)) is a tool to track libraries that aren't big enough to merit running dedicated library systems or working out logins. Just add it on to a django site! (Or run ours. Runs with [Whitenoise](https://warehouse.python.org/project/whitenoise/) for heroku-approved static files with gzip) We're using [Google's Polymer library](https://www.polymer-project.org/0.5/) for an IE shim for webcomponents and then the paper-ui library built upon it. But we don't use Polymer's MVC bending templating. Django does the "hard work" we're just here to take Paper-UI niceness for "free."
 
-MaterialDjango would support currently:
+MaterialDjango sports a subset of widgets, expanding slowly, currently:
 
-- TextInputs with PaperTextInput 
+- TextInputs with PaperTextInput
+- PasswordInputs with PaperPasswordInput
+
 {% highlight python %}
 #forms.py
 from django import forms
@@ -58,6 +60,4 @@ BookForm = mangle_form(modelform_factory(Book,fields="__all__"))
 - Easy compatability with next Polymer release because we don't use any of the internals!
 - Don't write CSS unless you have to.
 
-
-*Valve time may apply.
 
